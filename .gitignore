@@ -1,6 +1,7 @@
 /web/bundles/
 /app/bootstrap.php.cache
 /app/cache/*
+/app/cache/dev*
 /app/config/parameters.yml
 /app/logs/*
 !app/cache/.gitkeep
@@ -11,7 +12,9 @@
 /bin/
 /composer.phar
 /nbproject/private/
+nbproject
+
+#Ficheros sitemas
 .DS_Store
 UPGRADE*
 LICENSE*
-nbproject
