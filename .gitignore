@@ -4,13 +4,10 @@
 /app/cache/dev*
 /app/config/parameters.yml
 /app/logs/*
-!app/cache/.gitkeep
-!app/logs/.gitkeep
 /app/phpunit.xml
 /build/
 /vendor/
 /bin/
-/composer.phar
 /nbproject/private/
 nbproject
 
@@ -18,3 +15,6 @@ nbproject
 .DS_Store
 UPGRADE*
 LICENSE*
+/composer.phar
+!app/cache/.gitkeep
+!app/logs/.gitkeep

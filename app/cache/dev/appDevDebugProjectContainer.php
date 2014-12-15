@@ -54,15 +54,15 @@ class appDevDebugProjectContainer extends Container
             'database_driver' => 'pdo_mysql',
             'database_host' => '127.0.0.1',
             'database_port' => 3306,
-            'database_name' => 'rdpbbdd',
+            'database_name' => 'rdpBBDD',
             'database_user' => 'root',
-            'database_password' => 'abel2k01!',
+            'database_password' => 'Abel2k01!',
             'mailer_transport' => 'smtp',
             'mailer_host' => '127.0.0.1',
             'mailer_user' => NULL,
             'mailer_password' => NULL,
             'locale' => 'es',
-            'secret' => 'elreydelpollo',
+            'secret' => '808a810caf6223981da76dd99c2b7453e',
             'controller_resolver.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerResolver',
             'controller_name_converter.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerNameParser',
             'response_listener.class' => 'Symfony\\Component\\HttpKernel\\EventListener\\ResponseListener',
@@ -111,7 +111,7 @@ class appDevDebugProjectContainer extends Container
             'translation.extractor.class' => 'Symfony\\Component\\Translation\\Extractor\\ChainExtractor',
             'translation.writer.class' => 'Symfony\\Component\\Translation\\Writer\\TranslationWriter',
             'property_accessor.class' => 'Symfony\\Component\\PropertyAccess\\PropertyAccessor',
-            'kernel.secret' => 'elreydelpollo',
+            'kernel.secret' => '808a810caf6223981da76dd99c2b7453e',
             'kernel.http_method_override' => true,
             'kernel.trusted_hosts' => array(
 
@@ -495,7 +495,7 @@ class appDevDebugProjectContainer extends Container
 
             ),
             'assetic.java.bin' => '/usr/bin/java',
-            'assetic.node.bin' => '/usr/bin/node',
+            'assetic.node.bin' => '/usr/local/bin/node',
             'assetic.ruby.bin' => '/usr/bin/ruby',
             'assetic.sass.bin' => '/usr/bin/sass',
             'assetic.filter.cssrewrite.class' => 'Assetic\\Filter\\CssRewriteFilter',
@@ -626,6 +626,10 @@ class appDevDebugProjectContainer extends Container
             'web_profiler.debug_toolbar.intercept_redirects' => false,
             'web_profiler.debug_toolbar.mode' => 2,
             'sensio_distribution.webconfigurator.class' => 'Sensio\\Bundle\\DistributionBundle\\Configurator\\Configurator',
+            'sensio_distribution.webconfigurator.doctrine_step.class' => 'Sensio\\Bundle\\DistributionBundle\\Configurator\\Step\\DoctrineStep',
+            'sensio_distribution.webconfigurator.secret_step.class' => 'Sensio\\Bundle\\DistributionBundle\\Configurator\\Step\\SecretStep',
+            'sensio_distribution.security_checker.class' => 'SensioLabs\\Security\\SecurityChecker',
+            'sensio_distribution.security_checker.command.class' => 'SensioLabs\\Security\\Command\\SecurityCheckerCommand',
             'data_collector.templates' => array(
                 'data_collector.config' => array(
                     0 => 'config',
@@ -685,7 +689,7 @@ class appDevDebugProjectContainer extends Container
                 ),
             ),
             'console.command.ids' => array(
-
+                0 => 'sensio_distribution.security_checker.command',
             ),
         );
 
@@ -827,6 +831,8 @@ class appDevDebugProjectContainer extends Container
             'security.token_storage' => 'getSecurity_TokenStorageService',
             'security.user.provider.concrete.in_memory' => 'getSecurity_User_Provider_Concrete_InMemoryService',
             'security.validator.user_password' => 'getSecurity_Validator_UserPasswordService',
+            'sensio_distribution.security_checker' => 'getSensioDistribution_SecurityCheckerService',
+            'sensio_distribution.security_checker.command' => 'getSensioDistribution_SecurityChecker_CommandService',
             'sensio_distribution.webconfigurator' => 'getSensioDistribution_WebconfiguratorService',
             'sensio_framework_extra.cache.listener' => 'getSensioFrameworkExtra_Cache_ListenerService',
             'sensio_framework_extra.controller.listener' => 'getSensioFrameworkExtra_Controller_ListenerService',
@@ -920,6 +926,7 @@ class appDevDebugProjectContainer extends Container
             'web_profiler.debug_toolbar' => 'getWebProfiler_DebugToolbarService',
         );
         $this->aliases = array(
+            'console.command.sensiolabs_security_command_securitycheckercommand' => 'sensio_distribution.security_checker.command',
             'database_connection' => 'doctrine.dbal.default_connection',
             'debug.templating.engine.twig' => 'templating',
             'doctrine.orm.default_metadata_cache' => 'doctrine_cache.providers.doctrine.orm.default_metadata_cache',
@@ -1292,7 +1299,7 @@ class appDevDebugProjectContainer extends Container
         $b = new \Doctrine\DBAL\Configuration();
         $b->setSQLLogger($a);
 
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => '127.0.0.1', 'port' => 3306, 'dbname' => 'rdpbbdd', 'user' => 'root', 'password' => 'abel2k01!', 'charset' => 'UTF8', 'driverOptions' => array()), $b, new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this), array());
+        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => '127.0.0.1', 'port' => 3306, 'dbname' => 'rdpBBDD', 'user' => 'root', 'password' => 'Abel2k01!', 'charset' => 'UTF8', 'driverOptions' => array()), $b, new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this), array());
     }
 
     /**
@@ -1319,7 +1326,7 @@ class appDevDebugProjectContainer extends Container
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
         $a = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
-        $a->addDriver(new \Doctrine\ORM\Mapping\Driver\PHPDriver(array(0 => (dirname(dirname(dirname(__DIR__))).'/src/AppBundle/Resources/config/doctrine'))), 'AppBundle\\Entity');
+        $a->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($this->get('annotation_reader'), array(0 => (dirname(dirname(dirname(__DIR__))).'/src/AppBundle/Entity'))), 'AppBundle\\Entity');
 
         $b = new \Doctrine\ORM\Configuration();
         $b->setEntityNamespaces(array('AppBundle' => 'AppBundle\\Entity'));
@@ -1387,13 +1394,13 @@ class appDevDebugProjectContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return \Doctrine\Common\Cache\ArrayCache A Doctrine\Common\Cache\ArrayCache instance.
+     * @return \Doctrine\Common\Cache\ApcCache A Doctrine\Common\Cache\ApcCache instance.
      */
     protected function getDoctrineCache_Providers_Doctrine_Orm_DefaultMetadataCacheService()
     {
-        $this->services['doctrine_cache.providers.doctrine.orm.default_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
+        $this->services['doctrine_cache.providers.doctrine.orm.default_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ApcCache();
 
-        $instance->setNamespace('sf2orm_default_cc43fb230f1bacf8f5d2379aaf30fdcb23d276b6d6858564356f731c45605ede');
+        $instance->setNamespace('sf2orm_default_18bc363736707ffeb89da1a5638237239f4cb3cd76695b3a9c361ad024923303');
 
         return $instance;
     }
@@ -1410,7 +1417,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.default_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_default_cc43fb230f1bacf8f5d2379aaf30fdcb23d276b6d6858564356f731c45605ede');
+        $instance->setNamespace('sf2orm_default_18bc363736707ffeb89da1a5638237239f4cb3cd76695b3a9c361ad024923303');
 
         return $instance;
     }
@@ -1427,7 +1434,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.default_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_default_cc43fb230f1bacf8f5d2379aaf30fdcb23d276b6d6858564356f731c45605ede');
+        $instance->setNamespace('sf2orm_default_18bc363736707ffeb89da1a5638237239f4cb3cd76695b3a9c361ad024923303');
 
         return $instance;
     }
@@ -2786,6 +2793,32 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'sensio_distribution.security_checker' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \SensioLabs\Security\SecurityChecker A SensioLabs\Security\SecurityChecker instance.
+     */
+    protected function getSensioDistribution_SecurityCheckerService()
+    {
+        return $this->services['sensio_distribution.security_checker'] = new \SensioLabs\Security\SecurityChecker();
+    }
+
+    /**
+     * Gets the 'sensio_distribution.security_checker.command' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \SensioLabs\Security\Command\SecurityCheckerCommand A SensioLabs\Security\Command\SecurityCheckerCommand instance.
+     */
+    protected function getSensioDistribution_SecurityChecker_CommandService()
+    {
+        return $this->services['sensio_distribution.security_checker.command'] = new \SensioLabs\Security\Command\SecurityCheckerCommand($this->get('sensio_distribution.security_checker'));
+    }
+
+    /**
      * Gets the 'sensio_distribution.webconfigurator' service.
      *
      * This service is shared.
@@ -2795,7 +2828,12 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSensioDistribution_WebconfiguratorService()
     {
-        return $this->services['sensio_distribution.webconfigurator'] = new \Sensio\Bundle\DistributionBundle\Configurator\Configurator(dirname(dirname(__DIR__)));
+        $this->services['sensio_distribution.webconfigurator'] = $instance = new \Sensio\Bundle\DistributionBundle\Configurator\Configurator(dirname(dirname(__DIR__)));
+
+        $instance->addStep(new \Sensio\Bundle\DistributionBundle\Configurator\Step\DoctrineStep(), 10);
+        $instance->addStep(new \Sensio\Bundle\DistributionBundle\Configurator\Step\SecretStep(), 0);
+
+        return $instance;
     }
 
     /**
@@ -3890,7 +3928,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getUriSignerService()
     {
-        return $this->services['uri_signer'] = new \Symfony\Component\HttpKernel\UriSigner('elreydelpollo');
+        return $this->services['uri_signer'] = new \Symfony\Component\HttpKernel\UriSigner('808a810caf6223981da76dd99c2b7453e');
     }
 
     /**

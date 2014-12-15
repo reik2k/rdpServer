@@ -3,12 +3,12 @@ parameters:
     database_driver: pdo_mysql
     database_host: 127.0.0.1
     database_port: 3306
-    database_name: rdpbbdd
+    database_name: rdpBBDD
     database_user: root
-    database_password: abel2k01!
+    database_password: Abel2k01!
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
     locale: es
-    secret: elreydelpollo
+    secret: 808a810caf6223981da76dd99c2b7453e
