@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+<<<<<<< HEAD
         <title>{% block title %}el Rey del Pollo Server{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -9,5 +10,29 @@
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+=======
+        <title>{% block title %}{{title|default('el Rey del Pollo Server')}}{% endblock %}</title>
+        {% block stylesheet %}
+			<link href="{{asset('bundles/app/css/app.css')}}" rel="stylesheet"/>
+			<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+		
+			<!-- Latest compiled and minified CSS -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+		
+			<!-- Optional theme -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"/>
+        {% endblock %}
+        
+        <link rel="icon" type="image/x-icon" href="{{ asset('faviicon.ico') }}" />
+        
+        {% block javascript %}
+        	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+        	<!-- Latest compiled and minified JavaScript -->
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        {% endblock%}
+    </head>
+    <body class="body">
+        {% block body %}{% endblock %}
+>>>>>>> parent of 55c6506... url de invitacion
     </body>
 </html>

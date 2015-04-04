@@ -31,7 +31,11 @@ class Login
     /**
      * @var string
      *
+<<<<<<< HEAD
      * @ORM\Column(name="passwd=string(255)", type="string")
+=======
+     * @ORM\Column(name="passwd", type="string")
+>>>>>>> parent of 55c6506... url de invitacion
      */
     private $passwd;
 
@@ -70,9 +74,15 @@ class Login
     }
 
     /**
+<<<<<<< HEAD
      * Set passwd=string(255)
      *
      * @param string $passwd=string(255)
+=======
+     * Set passwd
+     *
+     * @param string $passwd
+>>>>>>> parent of 55c6506... url de invitacion
      * @return Login
      */
     public function setPasswd($passwd)
@@ -91,4 +101,8 @@ class Login
     {
         return $this->passwd;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> parent of 55c6506... url de invitacion
