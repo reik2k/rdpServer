@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block stylesheet %}
+	{{parent()}}
+{% endblock %}
+{% block body %}
+
+<h1 class="jumbotron text-center">Sophie's Birthday
+		<small><br/>Video para el recuerdo del Cumpleaños 2015</small></h1>
+	
+	<div class="jumbotron">
+		<div align="center" class="embed-responsive embed-responsive-16by9">
+		    <!--video controls class="embed-responsive-item">
+		        	<source src="{{ asset('') }}" type="video/mp4"/>
+		    </video-->
+		    <iframe src="https://player.vimeo.com/video/126842755" 
+		    		frameborder="0" 
+		    		webkitallowfullscreen 
+		    		mozallowfullscreen 
+		    		allowfullscreen 
+		    		class="embed-responsive-item"></iframe>
+		    </div>
+			<a type="button" 	href="{{path('_descargar_video')}}" 
+								class="btn-lg btn-info btn-block text-center"
+								target="_self">
+                            	Descarga</a>
+	</div>
+{% endblock %}

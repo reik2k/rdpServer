@@ -4,73 +4,86 @@
 {% block body %}
 
 {%set cont = 0 %}
-<div id="tablaLista" class="centrar lista">
-
-<a class="btn btn-danger" href="{{path("_logout")}}">
-  <i class="fa fa-sign-out fa-lg"></i> log out!</a>
-  
-<div style="display:table-caption; text-align:center; background:#D8D8D8;">
-	<h1 class="h">Lista de Invitados</h1>
+<div class="row">
+		<!--div class="col-xs-12">
+			<a class="btn btn-danger" href="{{path("_logout")}}">
+				<i class="fa fa-sign-out fa-lg"></i> log out!
+			</a>
+		</div-->
 </div>
-<div style="display:table-row">
-	<span>
-		<h4 class="h">Familia Prieto</h4>
-		<ol>
-		{% for invitado in dadlist %}
-			<li>{{invitado}}</li>
-			{% if invitado|first != '*' %}
-				{%set cont = cont + 1 %}
-			{% endif %}
-		{% endfor %}
-		</ol>
-	</span>
-
-	<span>
-		<h4 class="h">Familia Benéitez</h4>
-		<ol>
-		{% for invitado in momlist %}
-			<li>{{invitado}}</li>
-			{% if invitado|first != '*' %}
-				{%set cont = cont + 1 %}
-			{% endif %}		{% endfor %}
-		</ol>
-	</span>
-	<span>
-		<h4 class="h">Familia Pastor</h4>
-		<ol>
-		{% for invitado in pastorList %}
-			<li>{{invitado}}</li>
-			{% if invitado|first != '*' %}
-				{%set cont = cont + 1 %}
-			{% endif %}
-		{% endfor %}
-		</ol>
-	</span>
-	<span>
-		<h4 class="h">Familia Sánchez</h4>
-		<ol>
-		{% for invitado in sanchezList %}
-			<li>{{invitado}}</li>
-			{% if invitado|first != '*' %}
-				{%set cont = cont + 1 %}
-			{% endif %}		{% endfor %}
-		</ol>
-	</span>
-	<span>
-		<h4 class="h">Amigos</h4>
-		<ol>
-		{% for invitado in friendsList %}
-			<li>{{invitado}}</li>
-			{% if invitado|first != '*' %}
-				{%set cont = cont + 1 %}
-			{% endif %}		{% endfor %}
-		</ol>
-	</span>
+<div class="row jumbotron">
+		<div class="col-xs-12">
+			<h1 class="text-center">Lista de Invitados</h1>
+		</div>
 </div>
+<div class="row jumbotron">
+				<div class="col-md-4 ">
+					<h4 class="h">Familia Prieto</h4>
+					<ol>
+					{% for invitado in dadlist %}
+						<li>{{invitado}}</li>
+						{% if invitado|first != '*' %}
+							{%set cont = cont + 1 %}
+						{% endif %}
+					{% endfor %}
+					</ol>
+				</div>
+			
+				<div class="col-md-4">
+					<h4 class="h">Familia Benéitez</h4>
+					<ol>
+					{% for invitado in momlist %}
+						<li>{{invitado}}</li>
+						{% if invitado|first != '*' %}
+							{%set cont = cont + 1 %}
+						{% endif %}		
+					{% endfor %}
+					</ol>
+				</div>
+				
+				<div class="col-md-4">
+					<h4 class="h">Familia Sánchez</h4>
+					<ol>
+					{% for invitado in sanchezList %}
+						<li>{{invitado}}</li>
+						{% if invitado|first != '*' %}
+							{%set cont = cont + 1 %}
+						{% endif %}		
+					{% endfor %}
+					</ol>
+				</div>
+</div>
+<div class="row jumbotron">
+				<div class="col-md-4">
+					<h4 class="h">Familia Pastor</h4>
+					<ol>
+					{% for invitado in pastorList %}
+						<li>{{invitado}}</li>
+						{% if invitado|first != '*' %}
+							{%set cont = cont + 1 %}
+						{% endif %}
+					{% endfor %}
+					</ol>
+				</div>
+				
+				<div class="col-md-4">
+					<h4 class="h">Amigos</h4>
+					<ol>
+					{% for invitado in friendsList %}
+						<li>{{invitado}}</li>
+						{% if invitado|first != '*' %}
+							{%set cont = cont + 1 %}
+						{% endif %}		
+					{% endfor %}
+					</ol>
+				</div>
+				<div class="col-md-4">
+					<p>Número de Invitados: <h1><b>{{cont}}</b></h1></p>
+					<hr/>
+					<p style="font-style: italic;"><mark>Nota:</mark> Los nombres con <b>(*)</b> no asistirán.</p>
+				</div>
+</div>
+<div class="row jumbotron">
 
-<div style="display:table-row">
-		<p>Número de Invitados: <b>{{cont}}</b></p>
-<hr/>
-<p style="font-style: italic;"><b>Nota:</b> Los nombres con <b>*</b> no asistirán.</p>
 </div>
 {% endblock %}

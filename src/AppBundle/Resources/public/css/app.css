@@ -1,28 +1,46 @@
+
 .body
 {
-	background: #e7e6e6;
+	background: #edcbcb;
+	margin-top: 10px;
 }
 
 .h
 {
-	color: #8f8787;
-	text-align: center;
-	padding-bottom: 10px;
+	color: #7a6f6f;
+	text-align: left;
+}
+.border
+{
+ 	border: 1px solid black;
 }
 
-#tablaLista span
+.center
 {
-	display: table-cell; 
-	width: 200px;
-	height: 880px;  
-	background:#dfe2e5; 
-	padding:20px;
+	margin: 0 auto;
 }
+.columna
+{
+	/*height:990px;*/
+	background:#dfe2e5;
+}
+.padding
+{
+	padding: 15px;
+}
+/*
+********************A DEPRECAR********************
+
+
+********************OBJETOS A CENTRAR**************
+*/
 .centrar
 {
 	background-color: #D8D8D8;
 	overflow: hidden; 
 	position: absolute;
+	padding:10px;
+
 }
 .welcome
 {
@@ -32,18 +50,16 @@
 	top: 50%;
 	margin-top: -125px;
 	margin-left: -150px;
-	padding:10px;
 }
-.lista
+.lista2
 {
-	height: 1090px;
+	height: 1160px;
 	width: 1020px;
 	left: 50%;
 	top: 50%;
-	margin-top: -320px;
-	margin-left: -500px;
-	margin-bottom: 50px;
-	padding:10px;
+	margin-top: -360px;
+	margin-left: -510px;
+
 }
 .login
 {
@@ -53,6 +69,16 @@
 	top: 50%;
 	margin-top: -100px;
 	margin-left: -150px;
-	padding:10px;
-
 }
+.invitacion
+{
+	height: 320px;
+	/*width: 450px;
+	left: 50%;*/
+	top: 50%;
+	/*margin-top: -175px;*/
+	margin-left: -220px;
+}
+
+/**/
+

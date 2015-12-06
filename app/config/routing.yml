@@ -1,3 +1,26 @@
 app:
-    resource: @AppBundle/Controller/
+    resource: "@AppBundle/Controller/DefaultController.php"
     type:     annotation
+boda:
+    resource: "@AppBundle/Controller/BodaController.php"
+    type:     annotation
+angelica:
+    resource: "@AppBundle/Controller/AngelicaController.php"
+    type:     annotation
+yaiza:
+    resource: "@AppBundle/Controller/YaizaController.php"
+    type:     annotation
+bego:
+    resource: "@AppBundle/Controller/BegoController.php"
+    type:     annotation
+abel:
+    resource: "@AppBundle/Controller/AbelController.php"
+    type:     annotation
+
+# redirecting the root
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /abel/prieto/beneitez
+        permanent: true

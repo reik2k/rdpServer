@@ -2,18 +2,30 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Login;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @Route("/backdoor", name="_backdoor")
+ */
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="_homeBackDoor")
      */
-    public function indexAction()
+    public function backdoorAction()
     {
-        return $this->render('default/index.html.twig');
-    }    
+    	return $this->render('default/index.html.twig');
+    }
     /**
      * @Route("/goin/{name}/{id}", defaults={"name"="hola", "id"="adios"})
      * @Route("/goin/{name}/{id}", name="goin")
@@ -75,180 +87,5 @@ class DefaultController extends Controller
     {
         // The security layer will intercept this request
     }
-
-    /**
-    *
-    *@Route("/lista", name="listaBoda")
-    */
-    public function listaAction()
-    {
-    	
-    	$lista =  array( 'dadlist' => 
-                            array(  'Juan José',
-                            		'Otilia',
-                                    'Cristina',
-                                    'Rubén',
-                                    'Rubén Mujer',
-                                    'Miguel',
-                                    'Angelines',
-                                    'Sara',
-                                    '* Novio Sara',
-                                    'Laura',
-                                    'Ricardo',
-                                    '* Rodrigo',
-                                    'Ángel [Titín]',
-                                    'Aurelia Salmerón',
-                                    'María Ángeles',
-                                    'Antoñico',
-                                    'David',
-                                    '* Alex',
-                                    'Luis Miguel [Guisi]',
-                                    'Mari Jose',
-                                    'Virginia',
-                                    'Sergio',
-                                    'Victor',
-                                    'Chari',
-                                    'Minerva',
-                                    'Bienvenido',
-                                    'Sonia',
-                                    'Adrián',
-                                    'Eric',
-                                    'Carlitos',
-                                    'Isabel',
-                                    'Yaiza',
-                                    '* PRIMO',
-                                    '* PRIMO',
-                                    '* PRIMO',
-                                    '* PRIMO',
-                                    '* Joaquín',
-                                    '* TÍA ABUELA',
-                                    'Jesús',
-                                    'Mujer Jesús',
-									'Sele',
-									'Maria'),
-                        'momlist' => 
-                            array(	'Begoña',
-                            		'Pedro',
-                                    'Fabriciana',
-                                    'Pablo',
-                                    'Mari',
-                                    'Tío Segundo',
-                                    'Juanita',
-                                    '* Emilio',
-                                    '* Juaqui',
-                                    'Matías',
-                                    'Katty',
-                                    '* Nefi',
-                                    'Iván',
-                                    'Novia Iván',
-                                    'Juan Ramón',
-                                    'Araceli',
-                                    'Raquel',
-                                    'Novio Raquel',
-                                    '* Iván',
-                                    '* Mujer Iván',
-                                    'Marina',
-                                    'Fernando',
-                                    'Pilar',
-                                    'Jose',
-                                    'Luca',
-                                    'Eva',
-                                    'Alberto',
-                                    'Nieves',
-                                    'Emilio',
-                                    'Merce',
-                                    '* Raúl',
-                                    '* Gloria',
-                                    '* Raúl [hijo]',
-                                    '* Ana Prieto',
-                                    '* Ananda3',
-                                    '* David',
-                                    '* Marta',
-                                    '* Luis',
-                                    '* Daniel2'),
-                     'pastorList' => 
-                            array(	'José Andrés',
-                            		'Antonio',
-                                    'Coral',
-                                    'Rosi',
-                                    'Luís',
-                                    'Amaya',
-                                    'Oscar',
-                                    'Marga',
-                                    'Jose Manuel',
-                                    'Mari Tere',
-                                    'Pepe',
-                                    'Jose Manuel',
-                                    'Carmen',
-                                    'Maria Asunción',
-                                    'Rafa',
-                                    'Fabián'),
-                     'sanchezList' => 
-                            array(	'Toñi',
-                            		'Marga',
-                                    'María',
-                                    'Alejandro',
-                                    'Jacinta',
-                                    'Paco',
-                                    'Eusebio',
-                                    'Asun',
-                                    'Elisa',
-                                    'Ovidio',
-                                    'Belén',
-                                    'Elena',
-                                    'Clara',
-                                    'Teo',
-                                    'Isi',
-                                    'Miguel',
-                                    'Pablo',
-                                    'Conchi',
-                                    'Antonio',
-                                    'Antoñito',
-                                    'Timo',
-                                    'Mauri',
-                                    'Jose Luis',
-                                    'Carmenchu',
-                                    'Maite',
-                                    'Eulogio'),
-					'friendsList' => 
-                            array(	'Guti',
-                            		'Elena',
-                                    'Andrés',
-                                    'Elena',
-                                    'Nano',
-                                    'Angélica',
-                                    'Chuso',
-                                    'Alexia',
-                                    'Maria Rosa',
-                                    'Antonio',
-                                    'Cañizo',
-                                    'Chema',
-                                    'Mónica',
-                                    'Fabio',
-                                    'Cris Prado',
-                                    'Rocio',
-                                    'Ricardo',
-                                    'Basas',
-                                    'Emma',
-                                    'Virgi',
-                                    'Sara',
-                                    'Anama',
-                                    'Ana Yuste',
-                                    'Marta Yuste',
-                                    'Berta',
-                                    'David',
-                                    'Inma',
-                                    'Agus',
-                                    'Santi',
-                                    'Ali',
-                                    'Fran',
-                                    'Rachel',
-                                    'Argui',
-                                    'Maria Deluxe',
-                                    'Sofía',
-                                    'Abel'),
-                      'title' => 'Lista Boda');  
-
-	    return $this->render('AppBundle:Default:lista.html.twig', $lista);
-    }
+    
 }

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block stylesheet %}
+	{{parent()}}
+{% endblock %}
+{% block body %}
+
+
+    <form action="{{ path("_security_check") }}" method="post" id="login" style="">
+		<div class="centrar login">
+	        <h3 class="h">RDPapp</h3>
+	        <div class="input-group margin-bottom-sm">
+			  <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+			  <input id="username" name="_username" class="form-control" type="text" placeholder="User Name" tabindex="1"/>
+			</div>
+			<div class="input-group">
+			  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+			  <input id="password" name="_password" class="form-control" type="password" placeholder="Password" tabindex="2"/>
+			</div>
+
+			<button type="submit" style="float:right; margin:10px;">go</button>
+			
+			{% if error %}
+		    	<div style="padding:10px; width: 150px; height:60px; color:red;">
+		    		{{ error.message }}
+				</div>
+			{% endif %}
+        </div>
+    </form>
+    
+{% endblock %}

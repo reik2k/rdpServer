@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block stylesheet %}
+	{{parent()}}
+{% endblock %}
+{% block body %}
+
+<h1 class="jumbotron text-center">Lucia & Ang&eacute;lica
+		<small><br/>Video para el recuerdo de su Primera Comuni&oacute;n</small></h1>
+	
+	<div class="jumbotron">
+		<h1 class="text-center">Video</h1>
+		<div align="center" class="embed-responsive embed-responsive-16by9">
+		    <!--video controls class="embed-responsive-item">
+		        	<source src="{{ asset('') }}" type="video/mp4"/>
+		    </video-->
+		    <div class="embed-responsive embed-responsive-16by9">
+		    	<iframe src="https://player.vimeo.com/video/128544728" width="500" height="281" 
+		    		frameborder="0" 
+		    		webkitallowfullscreen mozallowfullscreen allowfullscreen
+		    		class="embed-responsive-item">
+		    		</iframe> 
+		    </div>
+		</div>
+		    
+	</div>    	
+	<div class="jumbotron">
+	
+		<h1 class="text-center">Descarga</h1>
+		<p>Si realmente te ha gustado el video y quieres tenerlo <mark>para siempre</mark>
+			 en tu ordenador, aprovecha a hacer clic en
+			 cualquiera los botones de mas abajo.
+		</p>
+		<p>Los videos est&aacute;n clasificados de mayor calidad a menor, respectivamente. Por lo tanto,
+			<mark>el que menos calidad m&aacute;s r&aacute;pido se descargar&aacute;</mark>.
+		</p>
+	
+			<a type="button" 	href="{{path('_descargar_original')}}" 
+								class="btn-lg btn-info btn-block text-center"
+								target="_self"
+								disabled="disabled">
+                            	Original (854x480 / 74MB)</a>
+            <a type="button" 	href="{{path('_descargar_hd')}}" 
+								class="btn-lg btn-info btn-block text-center"
+								target="_self"
+								disabled="disabled">
+                            	720 HD (854x480 / 60MB)</a>
+            <a type="button" 	href="{{path('_descargar_sd')}}" 
+								class="btn-lg btn-info btn-block text-center"
+								target="_self"
+								disabled="disabled">
+                            	SD (640x360 / 27MB)</a>
+
+		
+	</div>
+{% endblock %}

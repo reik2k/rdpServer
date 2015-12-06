@@ -8,8 +8,16 @@
 /build/
 /vendor/
 /bin/
+
 /nbproject/private/
 nbproject
+
+*.zip
+*.mp4
+*.jpg
+*.png
+*.gif
+*.pdf
 
 #Ficheros sitemas
 .DS_Store

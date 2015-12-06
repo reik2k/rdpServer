@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+{% block stylesheet %}
+	{{parent()}}
+{% endblock %}
+{% block body %}
+
+<h1 class="jumbotron text-center">Bienvenido</h1>
+<div class="thumbnail"><br/><br/>
+	{% image '@AppBundle/Resources/public/images/invitacion_thumbnail.png' %}
+		<img 	src="{{asset_url}}"
+				class="img-rounded img-responsive" alt="Abel&Sofia"/>
+	{% endimage %}
+
+	{% if not render %}
+		<div class="caption">
+			<h4 class="text-center">Invitaci&oacute;n de Boda</h4>
+			<h3 class="text-center">
+                            <small>
+                                <p>Si est&aacute;s leyendo es que ha sido
+								oficialmente invitado a asistir a nuetro 
+                                enlace matrimonial.<br/>
+                                El enlace tendrá lugar en:
+                                <a href="https://www.google.es/maps/place/Iglesia+de+San+Marcos/@40.969636,-5.663819,17z/data=!3m1!4b1!4m2!3m1!1s0xd3f26170ba9835d:0xb5a7365fd59941c?hl=es" target="_blank"
+                                data-toggle="tooltip" data-placement="top" 
+                               title="Click para mostrar ubicaci&oacute;n en Google Maps">La Igles&iacute;a de San Marcos</a> 
+                                el día:</p>
+                                <pre class="text-primary text-center">
+ Viernes, 10 de Julio de 2015 a las 19:00 en Salamanca.</pre>
+                            </small>
+                        </h3>
+			<p>
+			{% image '@AppBundle/Resources/public/images/invitacion_final.jpg' %}
+                            <a type="button" class="btn-lg btn-default btn-block text-center" 
+                               data-toggle="modal" data-target="#myModal">
+                                Mostar</a>
+                            <!--a href="{{asset_url}}" class="btn-sm btn-default" 
+                               data-toggle="tooltip" data-placement="right" 
+                               title="Click para Mostrar...">
+                                Ver</a-->
+							                                
+							<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							        <div class="modal-body">
+							            <img src="{{asset_url}}" class="img-responsive">
+							        </div>
+							    </div>
+							  </div>
+							</div>	
+			{% endimage %}
+			<a type="button" href="{{path('_descargar_invitacion')}}" 
+							class="btn-lg btn-info btn-block text-center"
+							target="_blank">
+                                Descarga</a>
+			</p>
+		</div>
+	{% else %}
+	
+		<div class="row">
+			{% image '@AppBundle/Resources/public/images/alianzas.png' %}
+				<div class="col-md-4">
+					<img src="{{asset_url}}" class="img-rounded img-responsive center" alt="Alianzas"/>
+					<p class="lead padding">Llevamos siendo pareja mucho tiempo, y por fin, hemos decidido
+					dar el gran paso. Hace mucho que sab&iacute;amos que est&aacute;bamos hechos el
+					uno para el otro.</p>
+				</div>
+			{% endimage %}
+			{% image '@AppBundle/Resources/public/images/iglesia.png' %}
+				<div class="col-md-4 padding">
+					<img src="{{asset_url}}" class="img-rounded img-responsive center" alt="Alianzas"/>
+					<p class="lead padding">Si est&aacute;s leyendo esto es que queremos comunicarte
+										nuestro enlace, ya que en persona, no nos ser&aacute; posible. Aun as&iacute;,
+										nos gustaría también añadir lo importante que eres para nosotros.</p> 
+				</div>
+			{% endimage %}
+			{% image '@AppBundle/Resources/public/images/pedida.png' %}
+				
+				<div class="col-md-4 padding">
+					<img src="{{asset_url}}" class="img-rounded img-responsive center" alt="Alianzas"/>
+					<p class="lead padding">Aunque no puedas venir estar&aacute;s presente en nuestros corazones.
+											Queremos enviarte un abrazo sincero.</p>
+				</div>
+			{% endimage %}
+		</div>
+	{% endif %}
+</div>
+{% endblock %}
+
+{% block javascript %}
+	{{parent()}}
+	<script>
+		$(document).ready(
+		function()
+		{
+			$('[data-toggle="tooltip"]').tooltip();
+			
+			function centerModal() 
+			{
+			    $(this).css('display', 'block');
+			    var $dialog = $(this).find(".modal-dialog");
+			    var offset = ($(window).height() - $dialog.height()) / 2;
+			    // Center modal vertically in window
+			    $dialog.css("margin-top", offset);
+			}
+
+			$('.modal').on('show.bs.modal', centerModal);
+			$(window).on("resize", function () {
+			    $('.modal:visible').each(centerModal);
+				});   
+		});
+	</script>
+{% endblock%}
