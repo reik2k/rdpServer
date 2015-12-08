@@ -16,7 +16,7 @@ security:
             memory:
                 users:
                     sofia:   { password: sofiaPastor, roles: [ 'ROLE_USER' ] }
-                    abel2k:  { password: Abel2k01!, roles: [ 'ROLE_USER' ] }
+                    abel2k:  { password: Abel2k01!, roles: [ 'ROLE_ADMIN' ] }
                     ovidio:  { password: temporal2015, roles: [ 'ROLE_USER' ] }
                     admin2k: { password: Abel2k01!, roles: [ 'ROLE_ADMIN' ] }
 
